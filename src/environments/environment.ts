@@ -10,4 +10,13 @@
 
 export const environment = {
   production: false,
+  firebaseConfig : {
+    apiKey: 'AIzaSyDRv1nPoS7ub25BDo4oCADOVo-6_PgkY8M',
+    authDomain: 'easypass-io.firebaseapp.com',
+    databaseURL: 'https://easypass-io.firebaseio.com',
+    projectId: 'easypass-io',
+    storageBucket: 'easypass-io.appspot.com',
+    messagingSenderId: '633848685496',
+    appId: '1:633848685496:web:2ce31dfd52f9b6d1'
+  }
 };
