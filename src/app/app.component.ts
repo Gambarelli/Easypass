@@ -5,6 +5,9 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { AnalyticsService } from './@core/utils/analytics.service';
+// import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'ngx-app',
@@ -12,6 +15,8 @@ import { AnalyticsService } from './@core/utils/analytics.service';
 })
 export class AppComponent implements OnInit {
 
+  // constructor(private analytics: AnalyticsService, db: AngularFirestore) {
+  // }
   constructor(private analytics: AnalyticsService) {
   }
 
