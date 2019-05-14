@@ -18,6 +18,7 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
+// tslint:disable-next-line: one-line
     if (!this.authService.isLoggedIn){
       this.router.navigate(['login']);
     }
