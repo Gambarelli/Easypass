@@ -111,8 +111,8 @@
     "component-selector": [
       true,
       "element",
-      "ngx",
-      "kebab-case"
+      // "ngx",
+      // "kebab-case"
     ],
     "ban": [
       true,
