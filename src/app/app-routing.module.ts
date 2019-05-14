@@ -8,7 +8,7 @@ import { ResetComponent } from './pages/reset/reset.component';
 import { AuthService } from './auth.service';
 
 const routes: Routes = [
-  { path: 'pages', loadChildren: 'app/pages/pages.module#PagesModule' },
+  { path: 'pages', loadChildren: 'app/pages/pages.module#PagesModule'},
   {
     path: 'login',
     component: LoginComponent,

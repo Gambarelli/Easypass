@@ -24,6 +24,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { RequestPasswordComponent } from './pages/request-password/request-password.component';
 import { ResetComponent } from './pages/reset/reset.component';
 import { AuthService } from './auth.service';
+import { AuthGuard } from './@core/utils/auth.guard';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, LogoutComponent, RegisterComponent, RequestPasswordComponent, ResetComponent],
@@ -43,6 +44,7 @@ import { AuthService } from './auth.service';
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
     AuthService,
+    AuthGuard,
   ],
 })
 export class AppModule {
