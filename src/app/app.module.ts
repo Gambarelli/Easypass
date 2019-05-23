@@ -16,7 +16,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-// import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './pages/login/login.component';
 import { LogoutComponent } from './pages/logout/logout.component';
@@ -38,7 +38,7 @@ import { AuthGuard } from './@core/utils/auth.guard';
     CoreModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    // AngularFirestore,
+    AngularFirestoreModule,
   ],
   bootstrap: [AppComponent],
   providers: [

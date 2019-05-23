@@ -33,6 +33,7 @@ import {
   NbRadioModule,
   NbSelectModule,
   NbTooltipModule,
+  NbTreeGridModule,
 } from '@nebular/theme';
 
 import { NbSecurityModule } from '@nebular/security';
@@ -99,6 +100,7 @@ const NB_MODULES = [
   NbRadioModule,
   NbSelectModule,
   NbTooltipModule,
+  NbTreeGridModule,
 ];
 
 const COMPONENTS = [

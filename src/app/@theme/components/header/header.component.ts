@@ -29,8 +29,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUsers()
-      .subscribe((users: any) => this.user = users.nick);
+    // this.userService.getUsers()
+    //   .subscribe((users: any) => this.user = users.nick);
+
+    this.user = JSON.parse(localStorage.getItem('user'));
+
     this.menuService.onItemClick()
       .pipe(
         filter(({ tag }) => tag === 'my-context-menu'),

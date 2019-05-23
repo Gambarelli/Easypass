@@ -7,30 +7,31 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/dashboard',
     home: true,
   },
-  {
-    title: 'FEATURES',
-    group: true,
-  },
-  {
-    title: 'Auth',
-    icon: 'nb-locked',
-    children: [
-      {
-        title: 'Login',
-        link: '/login',
-      },
-      {
-        title: 'Register',
-        link: '/register',
-      },
-      {
-        title: 'Request Password',
-        link: '/request-password',
-      },
-      {
-        title: 'Reset Password',
-        link: '/reset-password',
-      },
-    ],
-  },
 ];
+
+// {
+//   title: 'FEATURES',
+//   group: true,
+// },
+// {
+//   title: 'Auth',
+//   icon: 'nb-locked',
+//   children: [
+//     {
+//       title: 'Login',
+//       link: '/login',
+//     },
+//     {
+//       title: 'Register',
+//       link: '/register',
+//     },
+//     {
+//       title: 'Request Password',
+//       link: '/request-password',
+//     },
+//     {
+//       title: 'Reset Password',
+//       link: '/reset-password',
+//     },
+//   ],
+// },
