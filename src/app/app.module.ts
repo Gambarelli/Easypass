@@ -25,6 +25,7 @@ import { RequestPasswordComponent } from './pages/request-password/request-passw
 import { ResetComponent } from './pages/reset/reset.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './@core/utils/auth.guard';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, LogoutComponent, RegisterComponent, RequestPasswordComponent, ResetComponent],
@@ -39,6 +40,7 @@ import { AuthGuard } from './@core/utils/auth.guard';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    Ng2SmartTableModule,
   ],
   bootstrap: [AppComponent],
   providers: [
