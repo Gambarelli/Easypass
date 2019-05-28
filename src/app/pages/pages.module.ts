@@ -7,6 +7,7 @@ import { ThemeModule } from '../@theme/theme.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { AreasComponent } from './areas/areas.component';
 import { UsersComponent } from './users/users.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -18,6 +19,7 @@ const PAGES_COMPONENTS = [
     ThemeModule,
     DashboardModule,
     MiscellaneousModule,
+    Ng2SmartTableModule,
   ],
   declarations: [
     ...PAGES_COMPONENTS,
