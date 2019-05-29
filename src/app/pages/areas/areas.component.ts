@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { AreasService } from '../../@core/services/areas.service';
+import { LocalDataSource } from '../../../../node_modules/ng2-smart-table';
 
 @Component({
   selector: 'areas',
@@ -9,6 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class AreasComponent implements OnInit {
 
+// tslint:disable-next-line: comment-format
+  //Aqui se define las opciones y el titulo de la tabla
   settings = {
     delete: {
       confirmDelete: true,
@@ -20,24 +24,36 @@ export class AreasComponent implements OnInit {
       confirmSave: true,
     },
     columns: {
-      id: {
-        title: 'ID',
+      areaName: {
+        title: 'Residencia',
       },
-      name: {
-        title: 'Full Name',
+      resId: {
+        title: 'Id',
       },
-      username: {
-        title: 'User Name',
+      uid: {
+        title: 'uid',
       },
-      email: {
-        title: 'Email',
+      userQty: {
+        title: 'Cantidad de  usuarios',
       },
     },
   };
 
-  constructor() { }
+  //Este es el arreglo que va en la tabla
+  areasList: LocalDataSource;
+  areasService: AreasService;
+
+  constructor(areasService: AreasService) {
+    this.areasService = areasService;
+  }
 
   ngOnInit() {
+    const areas: Observable<any[]> = this.areasService.getAreas();
+    areas.forEach(item => {
+      //la variable item aqui tiene el arreglo que viene del servicio
+      this.areasList = new LocalDataSource(item);
+    });
+
   }
 
   onDeleteConfirm(event) {
@@ -61,6 +77,7 @@ export class AreasComponent implements OnInit {
     if (window.confirm('Are you sure you want to create?')) {
       event.newData['name'] += ' + added in code';
       event.confirm.resolve(event.newData);
+      this.areasService.createArea(event.newData);
     } else {
       event.confirm.reject();
     }

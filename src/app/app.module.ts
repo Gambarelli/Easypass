@@ -25,6 +25,7 @@ import { RequestPasswordComponent } from './pages/request-password/request-passw
 import { ResetComponent } from './pages/reset/reset.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './@core/utils/auth.guard';
+import { AreasService } from './@core/services/areas.service';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 @NgModule({
@@ -47,6 +48,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     { provide: APP_BASE_HREF, useValue: '/' },
     AuthService,
     AuthGuard,
+    AreasService,
   ],
 })
 export class AppModule {
