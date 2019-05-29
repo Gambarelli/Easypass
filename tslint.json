@@ -102,18 +102,8 @@
       "check-separator",
       "check-type"
     ],
-    "directive-selector": [
-      true,
-      "attribute",
-      "ngx",
-      "camelCase"
-    ],
-    "component-selector": [
-      true,
-      "element",
-      // "ngx",
-      // "kebab-case"
-    ],
+    "directive-selector": false,
+    "component-selector": false,
     "ban": [
       true,
       "eval",

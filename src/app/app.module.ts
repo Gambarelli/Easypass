@@ -16,7 +16,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-// import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './pages/login/login.component';
 import { LogoutComponent } from './pages/logout/logout.component';
@@ -25,6 +25,8 @@ import { RequestPasswordComponent } from './pages/request-password/request-passw
 import { ResetComponent } from './pages/reset/reset.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './@core/utils/auth.guard';
+import { AreasService } from './@core/services/areas.service';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, LogoutComponent, RegisterComponent, RequestPasswordComponent, ResetComponent],
@@ -38,13 +40,15 @@ import { AuthGuard } from './@core/utils/auth.guard';
     CoreModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    // AngularFirestore,
+    AngularFirestoreModule,
+    Ng2SmartTableModule,
   ],
   bootstrap: [AppComponent],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
     AuthService,
     AuthGuard,
+    AreasService,
   ],
 })
 export class AppModule {
