@@ -12,7 +12,7 @@ export class UsersService {
     this.db = db;
    }
 
-   createArea(user: any){
+   createUser(user: any){
     this.db.collection('users').add({
       name: user['name'],
       resId: user['resId'],
