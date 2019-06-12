@@ -35,7 +35,9 @@ export class AreasComponent implements OnInit {
   }
 
   borrarResidencia(item){
-    this.areasService.deleteArea(item).subscribe();
+    if (window.confirm('Are you sure you want to delete?')) {
+      this.areasService.deleteArea(item).subscribe();
+     }
   }
 
   ngOnInit() {
@@ -47,32 +49,5 @@ export class AreasComponent implements OnInit {
     });
 
   }
-
-  // onDeleteConfirm(event) {
-  //   if (window.confirm('Are you sure you want to delete?')) {
-  //     event.confirm.resolve();
-  //   } else {
-  //     event.confirm.reject();
-  //   }
-  // }
-
-  // onSaveConfirm(event) {
-  //   if (window.confirm('Are you sure you want to save?')) {
-  //     event.newData['name'] += ' + added in code';
-  //     event.confirm.resolve(event.newData);
-  //   } else {
-  //     event.confirm.reject();
-  //   }
-  // }
-
-  // onCreateConfirm(event) {
-  //   if (window.confirm('Are you sure you want to create?')) {
-  //     event.newData['name'] += ' + added in code';
-  //     event.confirm.resolve(event.newData);
-  //     this.areasService.createArea(event.newData);
-  //   } else {
-  //     event.confirm.reject();
-  //   }
-  // }
 
 }

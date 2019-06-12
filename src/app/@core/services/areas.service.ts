@@ -29,7 +29,7 @@ export class AreasService {
   }
 
   deleteArea(area: any) : Observable<any>{
-    return Observable.fromPromise(this.db.collection('areas').doc(area.resId).delete()
+    return Observable.fromPromise(this.db.collection('areas').doc(area.id).delete()
     .then(function() {
       console.log("Document successfully deleted!");
      })
@@ -43,6 +43,12 @@ export class AreasService {
   }
 
   getAreas(): Observable<any[]>{
-    return this.db.collection('areas').valueChanges();
+    return this.db.collection('areas').snapshotChanges().map(actions => {
+      return actions.map(action => {
+        const data = action.payload.doc.data() as any;
+        const id = action.payload.doc.id;
+        return { id, ...data };
+      });
+    });
   }
 }
