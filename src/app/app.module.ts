@@ -27,9 +27,12 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './@core/utils/auth.guard';
 import { AreasService } from './@core/services/areas.service';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { CreateAreasDialogComponent } from './pages/component/dialogs/create-areas-dialog/create-areas-dialog.component';
+
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, LogoutComponent, RegisterComponent, RequestPasswordComponent, ResetComponent],
+  declarations: [AppComponent, LoginComponent, LogoutComponent, RegisterComponent, RequestPasswordComponent, ResetComponent, 
+    CreateAreasDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -50,6 +53,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     AuthGuard,
     AreasService,
   ],
+  entryComponents: [CreateAreasDialogComponent],
 })
 export class AppModule {
 }

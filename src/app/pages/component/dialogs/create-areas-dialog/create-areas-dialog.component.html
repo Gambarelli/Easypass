@@ -1,0 +1,11 @@
+<nb-card>
+  <nb-card-header>Creación de nueva residencia</nb-card-header>
+  <nb-card-body>
+    <input style="display: block; margin: 8px" #name nbInput placeholder="Nombre de la residencia">
+    <input style="display: block; margin: 8px" #resId nbInput placeholder="Id de residencia">
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton status="danger" (click)="cancel()">Cancel</button>
+    <button nbButton status="success" (click)="submit(name.value,resId.value)">Crear</button>
+  </nb-card-footer>
+</nb-card>  

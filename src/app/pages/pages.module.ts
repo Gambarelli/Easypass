@@ -8,6 +8,10 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { AreasComponent } from './areas/areas.component';
 import { UsersComponent } from './users/users.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -20,6 +24,9 @@ const PAGES_COMPONENTS = [
     DashboardModule,
     MiscellaneousModule,
     Ng2SmartTableModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   declarations: [
     ...PAGES_COMPONENTS,
