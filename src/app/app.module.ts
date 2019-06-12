@@ -26,6 +26,7 @@ import { ResetComponent } from './pages/reset/reset.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './@core/utils/auth.guard';
 import { AreasService } from './@core/services/areas.service';
+import { UsersService } from './@core/services/users.service'
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { CreateAreasDialogComponent } from './pages/component/dialogs/create-areas-dialog/create-areas-dialog.component';
 
@@ -52,6 +53,7 @@ import { CreateAreasDialogComponent } from './pages/component/dialogs/create-are
     AuthService,
     AuthGuard,
     AreasService,
+    UsersService
   ],
   entryComponents: [CreateAreasDialogComponent],
 })
