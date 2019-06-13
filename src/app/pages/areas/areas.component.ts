@@ -1,8 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { AreasService } from '../../@core/services/areas.service';
-import { LocalDataSource } from '../../../../node_modules/ng2-smart-table';
+import { NbDialogService } from '@nebular/theme';
+import { CreateAreasDialogComponent } from '../component/dialogs/create-areas-dialog/create-areas-dialog.component';
+
+
+export interface Residencia {
+  areaName: string;
+  resId: string;
+  userQty: string;
+}
 
 @Component({
   selector: 'areas',
@@ -11,76 +19,35 @@ import { LocalDataSource } from '../../../../node_modules/ng2-smart-table';
 })
 export class AreasComponent implements OnInit {
 
-// tslint:disable-next-line: comment-format
-  //Aqui se define las opciones y el titulo de la tabla
-  settings = {
-    delete: {
-      confirmDelete: true,
-    },
-    add: {
-      confirmCreate: true,
-    },
-    edit: {
-      confirmSave: true,
-    },
-    columns: {
-      areaName: {
-        title: 'Residencia',
-      },
-      resId: {
-        title: 'Id',
-      },
-      uid: {
-        title: 'uid',
-      },
-      userQty: {
-        title: 'Cantidad de  usuarios',
-      },
-    },
-  };
+  displayedColumns: string[] = ['areaName', 'resId', 'userQty', 'actions'];
 
   //Este es el arreglo que va en la tabla
-  areasList: LocalDataSource;
+  areasList: Residencia[];
   areasService: AreasService;
 
-  constructor(areasService: AreasService) {
+  constructor(areasService: AreasService, private dialogService: NbDialogService) {
     this.areasService = areasService;
   }
 
+  crearResidencia(){
+    this.dialogService.open(CreateAreasDialogComponent)
+    .onClose.subscribe(data => this.areasService.createArea(data));
+  }
+
+  borrarResidencia(item){
+    if (window.confirm('Are you sure you want to delete?')) {
+      this.areasService.deleteArea(item).subscribe();
+     }
+  }
+
   ngOnInit() {
-    const areas: Observable<any[]> = this.areasService.getAreas();
+    const areas: Observable<Residencia[]> = this.areasService.getAreas();
     areas.forEach(item => {
       //la variable item aqui tiene el arreglo que viene del servicio
-      this.areasList = new LocalDataSource(item);
+      console.log(item);
+      this.areasList = item;
     });
 
-  }
-
-  onDeleteConfirm(event) {
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
-    }
-  }
-
-  onSaveConfirm(event) {
-    if (window.confirm('Are you sure you want to save?')) {
-      event.newData['name'] += ' + added in code';
-      event.confirm.resolve(event.newData);
-    } else {
-      event.confirm.reject();
-    }
-  }
-
-  onCreateConfirm(event) {
-    if (window.confirm('Are you sure you want to create?')) {
-      event.newData['name'] += ' + added in code';
-      event.confirm.resolve(event.newData);
-      this.areasService.createArea(event.newData);
-    } else {
-      event.confirm.reject();
-    }
   }
 
 }

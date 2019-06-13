@@ -1,4 +1,42 @@
-<ng2-smart-table [settings]="settings" (deleteConfirm)="onDeleteConfirm($event)"
-(editConfirm)="onSaveConfirm($event)"
-(createConfirm)="onCreateConfirm($event)"
-[source]="areasList"></ng2-smart-table>
+<div class="actions_container">
+    <button nbButton (click)="crearResidencia(dialog)" status="primary">Añadir residencia</button>
+</div>
+<nb-card style="width: 80%; margin: 0 auto;">
+    <nb-card-body>
+        <table style="width: 100%; text-align: center" mat-table [dataSource]="areasList" class="">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="areaName">
+              <th style="text-align: center" mat-header-cell *matHeaderCellDef> Nombre de Residencia </th>
+              <td mat-cell *matCellDef="let element"> {{element.areaName}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="resId">
+              <th style="text-align: center" mat-header-cell *matHeaderCellDef> Id de residencia </th>
+              <td mat-cell *matCellDef="let element"> {{element.resId}} </td>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="userQty">
+              <th style="text-align: center" mat-header-cell *matHeaderCellDef> Cantidad de usuarios </th>
+              <td mat-cell *matCellDef="let element"> {{element.userQty}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <th style="text-align: center" mat-header-cell *matHeaderCellDef> Acciones </th>
+              <td mat-cell *matCellDef="let element">
+                  <button (click)="borrarResidencia(element)" mat-icon-button aria-label="trash">
+                      <mat-icon>delete_outline</mat-icon>
+                  </button>
+              </td>
+          </ng-container> 
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </nb-card-body>
+</nb-card>

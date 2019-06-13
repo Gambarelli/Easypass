@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
 
 @Injectable()
 export class AreasService {
@@ -13,9 +16,9 @@ export class AreasService {
 
   createArea(area: any){
     this.db.collection('areas').add({
-      areaName: area['areaName'],
+      areaName: area['name'],
       resId: area['resId'],
-      userQty: area['userQty'],
+      userQty: "0",
   })
   .then(function() {
       console.log("Document successfully written!");
@@ -25,8 +28,14 @@ export class AreasService {
   });
   }
 
-  deleteArea(){
-
+  deleteArea(area: any) : Observable<any>{
+    return Observable.fromPromise(this.db.collection('areas').doc(area.id).delete()
+    .then(function() {
+      console.log("Document successfully deleted!");
+     })
+    .catch(function(error) {
+      console.error("Error deleting document: ", error);
+    }));
   }
 
   editArea(){
@@ -34,6 +43,12 @@ export class AreasService {
   }
 
   getAreas(): Observable<any[]>{
-    return this.db.collection('areas').valueChanges();
+    return this.db.collection('areas').snapshotChanges().map(actions => {
+      return actions.map(action => {
+        const data = action.payload.doc.data() as any;
+        const id = action.payload.doc.id;
+        return { id, ...data };
+      });
+    });
   }
 }

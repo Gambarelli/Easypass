@@ -1,0 +1,18 @@
+<nb-card>
+  <nb-card-header>Creación de nuevo usuario</nb-card-header>
+  <nb-card-body>
+    <input style="display: block; margin: 8px" #identidad nbInput placeholder="Cedula del residente/guardia">
+    <input style="display: block; margin: 8px" #name nbInput placeholder="nombre del usuario">
+    <input style="display: block; margin: 8px" #email nbInput placeholder="email del usuario">
+    <input style="display: block; margin: 8px" #password nbInput placeholder="password del usuario">
+    <nb-select class="appearance-outline size-medium shape-rectangle" placeholder="Select Showcase" [(selected)]="selectedItem">
+      <nb-option value="">Seleccione tipo de usuario</nb-option>
+      <nb-option value="res">Residente</nb-option>
+      <nb-option value="gua">Guardia</nb-option>
+    </nb-select>
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton status="danger" (click)="cancel()">Cancel</button>
+    <button nbButton status="success" (click)="submit(identidad.value,name.value,email.value,password.value)">Crear</button>
+  </nb-card-footer>
+</nb-card>  
