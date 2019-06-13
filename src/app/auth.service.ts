@@ -26,8 +26,6 @@ export class AuthService {
           if (userEasyPassData != undefined) {
             this.user = Object.assign({}, user, userEasyPassData);
             localStorage.setItem('user', JSON.stringify(this.user, this.getCircularReplacer()));
-          }else{
-            
           }
     });
       } else {
