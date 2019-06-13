@@ -1,3 +1,36 @@
-<p>
-  Prueba
-</p>
+<div class="actions_container">
+  <button nbButton (click)="crearUsuario(dialog)" status="primary">Añadir Usuario</button>
+</div>
+<nb-card style="width: 80%; margin: 0 auto;">
+  <nb-card-body>
+      <table style="width: 100%; text-align: center" mat-table [dataSource]="usersList">
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th style="text-align: center" mat-header-cell *matHeaderCellDef> Nombre de usuario </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+        
+          <!-- Weight Column -->
+          <ng-container matColumnDef="typeId">
+            <th style="text-align: center" mat-header-cell *matHeaderCellDef> tipo de usuario </th>
+            <td mat-cell *matCellDef="let element"> {{element.typeId}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th style="text-align: center" mat-header-cell *matHeaderCellDef> Acciones </th>
+            <td mat-cell *matCellDef="let element">
+                <button (click)="borrarResidencia(element)" mat-icon-button aria-label="trash">
+                    <mat-icon>delete_outline</mat-icon>
+                </button>
+            </td>
+        </ng-container> 
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  </nb-card-body>
+</nb-card>
