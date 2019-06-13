@@ -34,8 +34,8 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     const usuarios: Observable<any[]> = this.usersService.getUser();
 
-    usuarios.subscribe(item => {
-      this.usersList = item[0].docs.map(actions => {
+    usuarios.subscribe((item: any) => {
+      this.usersList = item.docs.map(actions => {
         const data = actions.data() as any;
         const id = actions.id;
         return { id, ...data };
