@@ -35,7 +35,7 @@ export class UsersComponent implements OnInit {
     const usuarios: Observable<any[]> = this.usersService.getUser();
 
     usuarios.subscribe(item => {
-      this.usersList = item.docs.map(actions => {
+      this.usersList = item[0].docs.map(actions => {
         const data = actions.data() as any;
         const id = actions.id;
         return { id, ...data };
