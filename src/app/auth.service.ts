@@ -26,6 +26,8 @@ export class AuthService {
           if (userEasyPassData != undefined) {
             this.user = Object.assign({}, user, userEasyPassData);
             localStorage.setItem('user', JSON.stringify(this.user, this.getCircularReplacer()));
+          }else{
+            
           }
     });
       } else {
@@ -70,8 +72,17 @@ export class AuthService {
   async login(email:  string, password:  string) {
 
     try {
-        await  this.afAuth.auth.signInWithEmailAndPassword(email, password);
-        this.router.navigate(['pages/dashboard']);
+        await  this.afAuth.auth.signInWithEmailAndPassword(email, password).then(result => {
+          // const usuarios: Observable<any[]> = this.getUser();
+          // usuarios.forEach(item => {
+          // let userEasyPassData = item.find(data => data.uid === user.uid);
+          // if (userEasyPassData != undefined) {
+          //   this.user = Object.assign({}, user, userEasyPassData);
+          //   localStorage.setItem('user', JSON.stringify(this.user, this.getCircularReplacer()));
+          // }
+          this.router.navigate(['pages/dashboard']);
+        });
+        
     } catch (e) {
         alert('Error!'  +  e.message);
     }
