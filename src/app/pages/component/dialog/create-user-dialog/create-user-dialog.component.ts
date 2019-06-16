@@ -19,10 +19,11 @@ export class CreateUserDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  submit(identidad, nombre, correo, contraseña) {
+  submit(identidad, nombre,casa , correo, contraseña) {
     const data: any = {};
     data.identidad = identidad;
     data.name = nombre;
+    data.house = casa;
     data.email = correo;
     data.password = contraseña;
     data.typeId = this.selectedItem;

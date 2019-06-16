@@ -18,6 +18,7 @@ export class UsersService {
     let resId = JSON.parse(localStorage.getItem('user')).resId;
     this.db.collection('users').add({
       name: user['name'],
+      house: user['house'],
       resId: resId,
       typeId: user['typeId'],
       uid: data.user.uid

@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 // {providedIn: 'root'}
 export class AuthService {
 
-  user: User;
+  user: any;
   private db: AngularFirestore;
 
   constructor(public  afAuth:  AngularFireAuth, public  router:  Router, db: AngularFirestore) {
@@ -25,7 +25,9 @@ export class AuthService {
           let userEasyPassData = item.find(data => data.uid === user.uid);
           if (userEasyPassData != undefined) {
             this.user = Object.assign({}, user, userEasyPassData);
-            localStorage.setItem('user', JSON.stringify(this.user, this.getCircularReplacer()));
+            if(this.user.typeId == "admin"){
+              localStorage.setItem('user', JSON.stringify(this.user, this.getCircularReplacer()));
+            }
           }
     });
       } else {
